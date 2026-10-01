@@ -50,3 +50,9 @@
 - Added a permanent host redirect so `www.controlresonantguide.app` returns HTTP 308 to the matching path on `controlresonantguide.app`.
 - Production verification passed: apex HTTPS returns 200 with HSTS, `/guides/` returns 200, `robots.txt` references the production sitemap, `sitemap.xml` exposes 37 canonical URLs, and the homepage canonical and Open Graph URL use the apex domain.
 - Local release checks still pass: 41 generated HTML files and 37 sitemap URLs.
+
+## 2026-10-02 - PNG Site Icon
+
+- Rasterized the existing black, taxi-yellow, and anomaly-violet field-card mark into a 512x512 RGBA PNG at `src/assets/images/favicon.png`.
+- The generated HTML now uses the PNG for the browser favicon and Apple Touch Icon, and the Organization schema exposes it as the site logo.
+- Kept the SVG source in the repository as the editable master artwork.
