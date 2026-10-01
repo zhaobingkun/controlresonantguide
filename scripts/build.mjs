@@ -146,7 +146,7 @@ function articleSchema(title, description, path) {
     headline: title,
     description,
     datePublished: site.launched,
-    dateModified: site.launched,
+    dateModified: site.lastModified,
     mainEntityOfPage: url(path),
     author: { '@type': 'Organization', name: site.authorName, url: url('/about/') },
     publisher: { '@type': 'Organization', name: site.name, url: site.domain }
@@ -458,7 +458,7 @@ const paths = [
   ...fieldGuides.map((item) => `/guides/${item.id}/`),
   ...simplePages.filter((item) => item.indexable !== false).map((item) => `/${item.slug}/`)
 ];
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((path) => `  <url><loc>${url(path)}</loc><lastmod>${site.launched}</lastmod></url>`).join('\n')}\n</urlset>\n`;
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((path) => `  <url><loc>${url(path)}</loc><lastmod>${site.lastModified}</lastmod></url>`).join('\n')}\n</urlset>\n`;
 await writeFile(join(out, 'sitemap.xml'), sitemap);
 await writeFile(join(out, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.domain}/sitemap.xml\n`);
 await cp(join(out, 'index.html'), join(root, 'preview.html'));

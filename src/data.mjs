@@ -4,6 +4,7 @@ export const site = {
   domain: 'https://controlresonantguide.app',
   description: 'Independent CONTROL Resonant walkthroughs for puzzles, Side Stories, abilities, bosses, collectibles, and campaign progression.',
   launched: '2026-10-01',
+  lastModified: '2026-10-02',
   authorName: 'Resonant Field Guide Editorial Desk',
   lastVerified: 'October 2, 2026',
   officialGameUrl: 'https://www.remedygames.com/games/control-2',
