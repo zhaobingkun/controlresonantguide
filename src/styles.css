@@ -262,6 +262,35 @@ h3 { font-size: 1.55rem; }
 .puzzle-card h3 { margin: 20px 0 12px; font-size: 2rem; }
 .puzzle-card p { color: #55595d; }
 .puzzle-card a { align-self: end; font: 600 .72rem "IBM Plex Mono", monospace; text-underline-offset: 4px; }
+.section-intro { max-width: 760px; margin: -16px 0 32px; color: #55595d; }
+.hub-route { display: flex; align-items: center; justify-content: space-between; gap: 36px; margin-top: 44px; padding: 28px; color: var(--paper); background: var(--ink-soft); border-left: 8px solid var(--yellow); }
+.hub-route h3 { margin: 8px 0 9px; font-size: 2rem; }
+.hub-route p { max-width: 620px; margin: 0; color: rgba(255,255,255,.68); }
+
+.activity-tracker { padding: 94px 0; background: var(--paper); }
+.activity-list { border-top: 1px solid var(--ink); }
+.activity-row { position: relative; display: grid; grid-template-columns: 54px minmax(0, 1fr) minmax(150px, .28fr); gap: 22px; min-height: 154px; padding: 26px 70px 26px 8px; border-bottom: 1px solid var(--line); transition: background .18s ease; }
+.activity-row:hover { background: var(--white); }
+.activity-row.is-complete { background: rgba(40, 122, 86, .08); }
+.activity-row.is-complete .case-zone::after { content: " / COMPLETE"; color: var(--green); }
+.activity-number { padding-top: 4px; color: var(--blue); font: 700 1rem "IBM Plex Mono", monospace; }
+.activity-row h3 { margin: 7px 0 10px; font-size: 2rem; }
+.activity-row p { max-width: 760px; margin: 0; color: #53565a; }
+.activity-gate { align-self: center; padding-left: 18px; border-left: 3px solid var(--yellow-dark); }
+.activity-gate span, .activity-gate strong { display: block; }
+.activity-gate span { margin-bottom: 5px; color: #666; font: .62rem "IBM Plex Mono", monospace; }
+.activity-gate strong { font-size: .9rem; }
+.activity-check { position: absolute; top: 26px; right: 16px; width: 42px; height: 42px; cursor: pointer; }
+.activity-check input { position: absolute; opacity: 0; }
+.activity-check > span[aria-hidden] { position: relative; display: block; width: 100%; height: 100%; border: 2px solid var(--ink); background: var(--paper); }
+.activity-check > span[aria-hidden]::before, .activity-check > span[aria-hidden]::after { content: ""; position: absolute; display: none; height: 3px; background: var(--white); transform-origin: center; }
+.activity-check input:checked + span { background: var(--green); border-color: var(--green); }
+.activity-check input:checked + span::before { display: block; width: 11px; left: 9px; top: 21px; transform: rotate(43deg); }
+.activity-check input:checked + span::after { display: block; width: 21px; left: 15px; top: 17px; transform: rotate(-48deg); }
+.activity-check input:focus-visible + span { outline: 3px solid var(--blue); outline-offset: 3px; }
+.walkthrough-step { margin: 22px 0; padding: 22px 24px; background: var(--white); border-left: 5px solid var(--blue); }
+.walkthrough-step h3 { margin: 0 0 10px; font-size: 1.85rem; }
+.walkthrough-step p { margin: 0; color: #4f5357; }
 
 .guide-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); }
 .guide-grid article { min-height: 280px; padding: 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -310,6 +339,8 @@ h3 { font-size: 1.55rem; }
   .method-grid article:nth-child(2) { border-right: 0; }
   .method-grid article:last-child { border-top: 1px solid var(--line); }
   .article-rail { position: static; }
+  .activity-row { grid-template-columns: 48px minmax(0, 1fr); }
+  .activity-gate { grid-column: 2; border-left: 0; padding-left: 0; }
   .page-hero-grid { grid-template-columns: 1fr; }
   .page-hero .file-stamp { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -342,6 +373,13 @@ h3 { font-size: 1.55rem; }
   .evidence-grid { gap: 46px; }
   .evidence-image { box-shadow: 8px 8px 0 var(--blue); }
   .method-grid, .puzzle-grid, .guide-grid, .mini-grid { grid-template-columns: 1fr; }
+  .hub-route { align-items: flex-start; flex-direction: column; }
+  .activity-tracker { padding: 70px 0; }
+  .activity-row { gap: 10px; padding-right: 54px; }
+  .activity-row h3 { font-size: 1.7rem; }
+  .activity-check { width: 34px; height: 34px; right: 8px; }
+  .activity-check input:checked + span::before { left: 6px; top: 16px; }
+  .activity-check input:checked + span::after { left: 11px; top: 13px; }
   .cluster-heading { grid-template-columns: 1fr; gap: 14px; }
   .method-grid article, .guide-grid article { border-right: 0; }
   .guide-grid article { min-height: 240px; }

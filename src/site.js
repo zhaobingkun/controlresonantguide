@@ -52,6 +52,47 @@ if (checks.length) {
   });
 }
 
+document.querySelectorAll('[data-activity-tracker]').forEach((tracker) => {
+  const key = `rfg-${tracker.dataset.activityTracker}`;
+  const activityChecks = [...tracker.querySelectorAll('[data-activity-check]')];
+  const count = tracker.querySelector('[data-activity-count]');
+  const bar = tracker.querySelector('[data-activity-bar]');
+
+  function readActivityProgress() {
+    try {
+      const value = JSON.parse(localStorage.getItem(key) || '[]');
+      return new Set(Array.isArray(value) ? value : []);
+    } catch {
+      return new Set();
+    }
+  }
+
+  function renderActivityProgress(progress) {
+    activityChecks.forEach((check) => {
+      check.checked = progress.has(check.dataset.activityCheck);
+      check.closest('[data-activity-row]')?.classList.toggle('is-complete', check.checked);
+    });
+    if (count) count.textContent = `${progress.size} / ${activityChecks.length}`;
+    if (bar) bar.style.width = `${activityChecks.length ? (progress.size / activityChecks.length) * 100 : 0}%`;
+  }
+
+  renderActivityProgress(readActivityProgress());
+  activityChecks.forEach((check) => {
+    check.addEventListener('change', () => {
+      const progress = readActivityProgress();
+      if (check.checked) progress.add(check.dataset.activityCheck);
+      else progress.delete(check.dataset.activityCheck);
+      localStorage.setItem(key, JSON.stringify([...progress]));
+      renderActivityProgress(progress);
+    });
+  });
+
+  tracker.querySelector('[data-activity-reset]')?.addEventListener('click', () => {
+    localStorage.removeItem(key);
+    renderActivityProgress(new Set());
+  });
+});
+
 const solverCopy = {
   'roof-signs': {
     title: 'Test the roof signs at close range.',

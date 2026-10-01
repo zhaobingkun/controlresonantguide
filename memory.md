@@ -61,3 +61,13 @@
 
 - Added the GA4 Google tag with measurement ID `G-QTD5JHM4Z2` to the shared HTML head template.
 - All generated pages now load `gtag.js` asynchronously and initialize the same GA4 property exactly once per document.
+
+## 2026-10-02 - Puzzle Hub and Activity Guides
+
+- Replaced the missing `/puzzles/` route with a real puzzle hub. It links the six existing Last Taxi patterns, the taxi matcher, Freeze Frame, Power Lines, and Every Dog Has Her Day.
+- Added `/puzzles/freeze-frame/` with all 14 camera routes, access gates, final Downtown containment guidance, and a localStorage checklist. Cross-check: two cameras in each of seven zones; a camera disappearing after seeing Dylan is a failed approach, not completion.
+- Added `/guides/power-lines/` as one substantial mission page rather than thin station variants. It covers Perimeter, Factory, East Park, Vanished Platform A, Vanished Platform B, and the Dr. Florez completion step.
+- Added `/guides/mysterious-dog-locations/` with seven toy returns plus the final Gap interaction. Treat this as seven regional dogs but eight tracked stops; the eighth has no new toy and closes the Side Story.
+- Added the activity cluster to `/guides/`, direct discovery links on the homepage, a Puzzles item in primary navigation, and updated footer routes.
+- Build now produces 41 indexable URLs and 45 HTML files. `npm run build` and `npm run check` pass. `npm run adsense:check` still intentionally fails only the seven real-world trust and launch gates.
+- Browser QA passed at 1440px and 390px. The four new routes have one H1, production canonicals, no horizontal overflow, and no console errors. Freeze Frame localStorage persistence and reset were both verified.
