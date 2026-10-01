@@ -38,3 +38,15 @@
 - Keep **Resonant Field Guide** as the visible brand and maintain prominent independent fan-guide labeling because the domain contains the full game name.
 - Updated the canonical base so canonical URLs, Open Graph URLs, structured data, `sitemap.xml`, and `robots.txt` build against `https://controlresonantguide.app`.
 - The canonical local working directory is `/Users/zhaobingkun/dev/controlresonantguide.app`; the previous `/Users/zhaobingkun/dev/resonantfieldguide.com` directory is retained only as a migration snapshot.
+
+## 2026-10-02 - GitHub and Production Launch
+
+- Created the public GitHub repository `https://github.com/zhaobingkun/controlresonantguide` and pushed `main` over SSH.
+- Initial site commit: `5417e31b3f7030b9fb2bbb8fabb9b33c1168877d` (`Launch CONTROL Resonant field guide`).
+- Canonical redirect commit: `23d563b29629fdc8152b00214f4d5eae0aec7d29` (`Redirect www traffic to canonical domain`).
+- Connected the repository to Vercel project `zhaobingkuns-projects-b2b82dc8/controlresonantguide`.
+- Cloudflare DNS uses DNS-only A records for both `@` and `www`, each pointing to Vercel at `76.76.21.21`.
+- Production deployment `dpl_6Hwaq6JTxquswE5GN8BcJn2kwPKD` is Ready and aliased to `https://controlresonantguide.app` and `https://www.controlresonantguide.app`.
+- Added a permanent host redirect so `www.controlresonantguide.app` returns HTTP 308 to the matching path on `controlresonantguide.app`.
+- Production verification passed: apex HTTPS returns 200 with HSTS, `/guides/` returns 200, `robots.txt` references the production sitemap, `sitemap.xml` exposes 37 canonical URLs, and the homepage canonical and Open Graph URL use the apex domain.
+- Local release checks still pass: 41 generated HTML files and 37 sitemap URLs.
