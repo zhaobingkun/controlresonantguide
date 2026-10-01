@@ -1,6 +1,6 @@
 {
-  "domainLive": false,
-  "validHttps": false,
+  "domainLive": true,
+  "validHttps": true,
   "workingContact": false,
   "namedPublisherProfile": false,
   "originalGameplayCaptures": false,

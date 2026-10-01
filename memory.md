@@ -69,5 +69,5 @@
 - Added `/guides/power-lines/` as one substantial mission page rather than thin station variants. It covers Perimeter, Factory, East Park, Vanished Platform A, Vanished Platform B, and the Dr. Florez completion step.
 - Added `/guides/mysterious-dog-locations/` with seven toy returns plus the final Gap interaction. Treat this as seven regional dogs but eight tracked stops; the eighth has no new toy and closes the Side Story.
 - Added the activity cluster to `/guides/`, direct discovery links on the homepage, a Puzzles item in primary navigation, and updated footer routes.
-- Build now produces 41 indexable URLs and 45 HTML files. `npm run build` and `npm run check` pass. `npm run adsense:check` still intentionally fails only the seven real-world trust and launch gates.
+- Build now produces 41 indexable URLs and 45 HTML files. `npm run build` and `npm run check` pass. Production DNS and HTTPS are verified, so those AdSense flags are now true; `npm run adsense:check` still intentionally fails the five remaining trust and audience gates.
 - Browser QA passed at 1440px and 390px. The four new routes have one H1, production canonicals, no horizontal overflow, and no console errors. Freeze Frame localStorage persistence and reset were both verified.
