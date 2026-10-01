@@ -56,3 +56,8 @@
 - Rasterized the existing black, taxi-yellow, and anomaly-violet field-card mark into a 512x512 RGBA PNG at `src/assets/images/favicon.png`.
 - The generated HTML now uses the PNG for the browser favicon and Apple Touch Icon, and the Organization schema exposes it as the site logo.
 - Kept the SVG source in the repository as the editable master artwork.
+
+## 2026-10-02 - Google Analytics
+
+- Added the GA4 Google tag with measurement ID `G-QTD5JHM4Z2` to the shared HTML head template.
+- All generated pages now load `gtag.js` asynchronously and initialize the same GA4 property exactly once per document.

@@ -34,6 +34,13 @@ function head({ title, description, path = '/', type = 'website', schemas = [], 
   <link rel="canonical" href="${url(path)}">
   <link rel="icon" href="/assets/images/favicon.png" type="image/png" sizes="512x512">
   <link rel="apple-touch-icon" href="/assets/images/favicon.png" sizes="512x512">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QTD5JHM4Z2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QTD5JHM4Z2');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
