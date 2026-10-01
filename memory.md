@@ -46,7 +46,7 @@
 - Canonical redirect commit: `23d563b29629fdc8152b00214f4d5eae0aec7d29` (`Redirect www traffic to canonical domain`).
 - Connected the repository to Vercel project `zhaobingkuns-projects-b2b82dc8/controlresonantguide`.
 - Cloudflare DNS uses DNS-only A records for both `@` and `www`, each pointing to Vercel at `76.76.21.21`.
-- Production deployment `dpl_6Hwaq6JTxquswE5GN8BcJn2kwPKD` is Ready and aliased to `https://controlresonantguide.app` and `https://www.controlresonantguide.app`.
+- Production is published through the stable aliases `https://controlresonantguide.app` and `https://www.controlresonantguide.app`; Vercel's Git-connected production deployment was confirmed `Ready` after the launch commits.
 - Added a permanent host redirect so `www.controlresonantguide.app` returns HTTP 308 to the matching path on `controlresonantguide.app`.
 - Production verification passed: apex HTTPS returns 200 with HSTS, `/guides/` returns 200, `robots.txt` references the production sitemap, `sitemap.xml` exposes 37 canonical URLs, and the homepage canonical and Open Graph URL use the apex domain.
 - Local release checks still pass: 41 generated HTML files and 37 sitemap URLs.
