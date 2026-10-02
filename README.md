@@ -16,6 +16,6 @@ The generated site is written to `public/`. The local preview runs at `http://12
 
 ## Editorial status
 
-This is an independent fan guide. The current build contains 37 indexable pages across a Taxi cluster and a broader progression cluster covering quest order, Shift, Reach, Ability Barriers, resets, Resonants, and early build choices.
+This is an independent fan guide. The current build contains 43 indexable pages across Taxi, puzzle, activity, progression, ability, and combat clusters.
 
 Guide copy is independently summarized from cross-checked current sources. It should be revised when stronger first-party documentation or direct gameplay evidence becomes available.

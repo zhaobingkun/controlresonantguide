@@ -27,11 +27,11 @@ Official references:
 
 ## Before applying
 
-1. Launch the final domain with valid HTTPS and stable canonical URLs.
-2. Add a working contact or correction address on the public Contact page.
+1. Completed: the final domain is live with valid HTTPS and stable canonical URLs.
+2. Completed: the public Contact page links to the repository's GitHub Issues route for corrections and attribution requests.
 3. Add a real publisher/editor identity and brief relevant experience. Do not invent a persona.
 4. Replace or supplement launch-week third-party screenshots with original gameplay captures for all seven locations and the major puzzle types.
-5. Completed locally: the second cluster adds 12 substantive pages for quest progression, abilities, barriers, resets, bosses, and early build decisions. Recheck these pages against original gameplay captures after launch.
+5. Completed: the second cluster adds 12 substantive pages for quest progression, abilities, barriers, resets, bosses, and early build decisions. Painting and Laundry puzzle pages now add direct solutions, troubleshooting, and cross-source reconciliation. Recheck these pages against original gameplay captures after launch.
 6. Verify indexing in Search Console and wait for genuine impressions or reader behavior before applying.
 7. Keep Privacy, Terms, Contact, empty search, error, and other low-content utility pages free of ad units.
 8. Add `ads.txt` only after AdSense supplies the real publisher ID. Never publish a placeholder publisher ID.

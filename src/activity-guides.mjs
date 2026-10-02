@@ -28,8 +28,61 @@ export const activitySources = {
       label: 'GamesRadar: Mysterious Dog route',
       url: 'https://www.gamesradar.com/games/action-rpg/control-resonant-mysterious-dog/'
     }
+  ],
+  painting: [
+    {
+      label: 'Destructoid: Evacuation Zone gallery solution',
+      url: 'https://www.destructoid.com/how-to-solve-the-gallery-puzzle-in-the-evacuation-zone-in-control-resonant/'
+    },
+    {
+      label: 'All Things How: painting positions and reward',
+      url: 'https://allthings.how/control-resonant-how-to-solve-the-art-gallery-painting-puzzle/'
+    }
+  ],
+  laundry: [
+    {
+      label: 'GamesRadar: laundry room layout and solution',
+      url: 'https://www.gamesradar.com/games/action-rpg/control-resonant-washing-machine-puzzle-laundry/'
+    },
+    {
+      label: 'KeenGamer: seven-row binary code and troubleshooting',
+      url: 'https://www.keengamer.com/articles/guides/control-resonant-washing-machine-puzzle-solution/'
+    }
   ]
 };
+
+export const paintingSelections = [
+  {
+    title: 'Journey',
+    position: 'Middle',
+    cue: 'A road running through green country toward a tree.'
+  },
+  {
+    title: 'Windows',
+    position: 'Left',
+    cue: 'Tree branches or trunks curling into window-like loops.'
+  },
+  {
+    title: 'Thunder',
+    position: 'Left',
+    cue: 'A single tree centered in a green field.'
+  },
+  {
+    title: 'Tides',
+    position: 'Middle',
+    cue: 'A fallen tree above or beside visible water.'
+  }
+];
+
+export const laundryRows = [
+  { row: '01', code: '0001000', active: '4', place: 'Long bank on the left wall' },
+  { row: '02', code: '001100', active: '3 and 4', place: 'Left island, side facing the left wall' },
+  { row: '03', code: '100001', active: '1 and 6', place: 'Left island, side facing the center aisle' },
+  { row: '04', code: '000000', active: 'None', place: 'Right island, side facing the center aisle' },
+  { row: '05', code: '000000', active: 'None', place: 'Right island, side facing the right wall' },
+  { row: '06', code: '000000', active: 'None', place: 'Rear part of the right wall, near the back room' },
+  { row: '07', code: '100000', active: '1', place: 'Front part of the right wall, beside the divider' }
+];
 
 export const freezeFrameCameras = [
   {
@@ -134,6 +187,18 @@ export const dogStops = [
 ];
 
 export const activityCards = [
+  {
+    eyebrow: 'Secret Hideout',
+    title: 'Painting Puzzle',
+    description: 'Match Journey, Windows, Thunder, and Tides to the correct canvases in the Konstig gallery.',
+    href: '/puzzles/painting-puzzle/'
+  },
+  {
+    eyebrow: 'Secret Hideout',
+    title: 'Laundry Puzzle',
+    description: 'Set the six active machines from the While You Wait binary note and open the hidden basement.',
+    href: '/puzzles/laundry-puzzle/'
+  },
   {
     eyebrow: 'Side Story',
     title: 'Freeze Frame Cameras',

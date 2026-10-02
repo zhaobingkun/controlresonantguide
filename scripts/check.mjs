@@ -53,7 +53,7 @@ for (const required of ['robots.txt', 'sitemap.xml', 'assets/css/site.css', 'ass
 
 const sitemap = await readFile(join(publicRoot, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
-if (urls.length < 37) errors.push(`sitemap has only ${urls.length} URLs`);
+if (urls.length < 43) errors.push(`sitemap has only ${urls.length} URLs`);
 
 if (errors.length) {
   console.error(errors.join('\n'));

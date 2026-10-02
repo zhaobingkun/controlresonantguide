@@ -71,3 +71,13 @@
 - Added the activity cluster to `/guides/`, direct discovery links on the homepage, a Puzzles item in primary navigation, and updated footer routes.
 - Build now produces 41 indexable URLs and 45 HTML files. `npm run build` and `npm run check` pass. Production DNS and HTTPS are verified, so those AdSense flags are now true; `npm run adsense:check` still intentionally fails the five remaining trust and audience gates.
 - Browser QA passed at 1440px and 390px. The four new routes have one H1, production canonicals, no horizontal overflow, and no console errors. Freeze Frame localStorage persistence and reset were both verified.
+
+## 2026-10-02 - Painting, Laundry, and Public Corrections
+
+- Added `/puzzles/painting-puzzle/` with the four sold-work selections, visual subject cues, switch behavior, reward, and a failure checklist. The stable solution is Journey middle, Windows left, Thunder left, and Tides middle when facing each painting group.
+- Added `/puzzles/laundry-puzzle/` with the seven-line binary code, a room-oriented table, a non-binary route, reward details, and door troubleshooting. The page explicitly reconciles the six-row and seven-row numbering used by different walkthroughs; both describe the same six active machines.
+- Expanded Puzzle Hub, Guides hub, and footer discovery links. Build now produces 43 indexable URLs and 47 HTML files.
+- Replaced the Contact placeholder with a public GitHub Issues correction route and marked the working-contact readiness gate complete. A GitHub account is required to submit, and the page warns visitors not to post personal information.
+- Updated Privacy to disclose GA4, localStorage checklists, public GitHub correction submissions, and external-site policies. The utility pages remain `noindex,follow` and outside the sitemap.
+- Desktop and 390px mobile QA passed for the new routes. The Laundry table scrolls inside its own container without widening the page; both pages have one H1, production canonicals, and no console errors.
+- `npm run build` and `npm run check` pass. `npm run adsense:check` now remains blocked only by a real named editor, original gameplay captures, confirmed GSC indexing, and observed search or reader activity. GSC submission alone must not be marked as indexing.

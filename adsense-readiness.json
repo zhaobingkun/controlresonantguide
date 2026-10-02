@@ -1,7 +1,7 @@
 {
   "domainLive": true,
   "validHttps": true,
-  "workingContact": false,
+  "workingContact": true,
   "namedPublisherProfile": false,
   "originalGameplayCaptures": false,
   "searchConsoleIndexed": false,
