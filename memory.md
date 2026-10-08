@@ -1,11 +1,20 @@
 # Project Memory
 
+## 2026-10-08 - Ability and Progression Evidence Refresh
+
+- Continued authorized content quality work. Reviewed PowerPyx mission pages through links from its quest index: /control-resonant-the-incursion-fault-walkthrough/ and /control-resonant-the-subway-fault-walkthrough/.
+- Corrected ability timing: Shift and Reach are introduced during Jesse’s ritual, before the Fault mission finishes. Added concise garage-key/TV and subway-entry/return-route summaries with direct mission citations and explicit source-only evidence notes. Avoided asserting controller bindings or inventing screenshots.
+- Added prerequisite tables to Quest Order and Where to Go Next, mapping named campaign stages to required Faults/Resonants/research. Kept region planning and current-objective diagnosis distinct.
+- Page-specific review and Article/sitemap modification dates changed only for four updated guides. Other page dates retain their prior records.
+- Build/check pass: 39 sitemap URLs / 43 HTML pages; verified four dates and two five-row dependency tables. Publication pending.
+
+
 ## 2026-10-08 - Taxi Consolidation
 
 - User said continue after audit. Consolidated start, payphone and ending pages into /last-taxi/ with #start and #completion sections; merged progress support into missing-taxi-fix with #progress. Four former URLs use permanent Vercel redirects, are absent from sitemap, and internal links point directly to destinations.
 - Narrowed Quest List title to Main Quest List; replaced unproven missing-taxi cause statistics with diagnostic suggestions. About explicitly distinguishes source summaries from in-game testing.
 - Current build: 39 indexable URLs / 43 HTML files. Enhanced check reconciles indexable HTML with sitemap and checks merged links, redirect destinations and anchors rather than requiring an arbitrary URL minimum. Build, check and diff whitespace checks pass.
-- Publication verification pending below. Original gameplay evidence and editor identity still require real inputs.
+- Published commit 6ec895c to origin/main. Live verification: all four merged URLs return HTTP 308 to the intended destination anchors; /last-taxi/ returns 200 with #completion; sitemap returns 200 with 39 URLs. Original gameplay evidence and editor identity still require real inputs.
 
 
 ## 2026-10-08 - Content Quality Audit and Corrections

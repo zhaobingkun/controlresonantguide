@@ -2,8 +2,10 @@ import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { consolidatedRoutes, faqs, guides, locations, puzzles, site } from '../src/data.mjs';
-import { fieldGuideCategories, fieldGuides } from '../src/field-guides.mjs';
+import { enrichFieldGuides, fieldGuideCategories, fieldGuides } from '../src/field-guides.mjs';
 import { activityCards, activitySources, dogStops, freezeFrameCameras, laundryRows, paintingSelections } from '../src/activity-guides.mjs';
+
+enrichFieldGuides(fieldGuides);
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'public');
@@ -153,8 +155,8 @@ function articleSchema(title, description, path) {
   };
 }
 
-function editorialMeta(label = 'Field guide') {
-  return `<div class="editorial-meta"><span>${esc(label)}</span><span>By ${esc(site.authorName)}</span><span>Sources reviewed ${esc(site.lastVerified)}</span><a href="/about/#method">How we verify</a></div>`;
+function editorialMeta(label = 'Field guide', reviewed = site.lastVerified) {
+  return `<div class="editorial-meta"><span>${esc(label)}</span><span>By ${esc(site.authorName)}</span><span>Sources reviewed ${esc(reviewed)}</span><a href="/about/#method">How we verify</a></div>`;
 }
 
 function sourceRecord(context = 'Location and puzzle details') {
@@ -191,7 +193,7 @@ function fieldGuideCard(item, index = 0) {
 }
 
 function fieldSourceRecord(item) {
-  return `<section class="source-record"><span class="kicker">Evidence record</span><h2>How this guide was checked</h2><p>${esc(item.title)} was independently summarized from current launch-week quest, boss, and progression references. The page separates confirmed dependencies from route advice and avoids treating one build choice as universally correct.</p><ul>${item.sources.map((source) => `<li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${esc(source.label)}</a></li>`).join('')}</ul></section>`;
+  return `<section class="source-record"><span class="kicker">Evidence record</span><h2>How this guide was checked</h2><p>${esc(item.evidenceNote || `${item.title} is a source-based summary of quest, boss, and progression references. It has not been tested in-game; route advice and prerequisite records should be distinguished.`)}</p><ul>${item.sources.map((source) => `<li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${esc(source.label)}</a></li>`).join('')}</ul></section>`;
 }
 
 function activitySourceRecord(title, sources) {
@@ -376,8 +378,9 @@ function fieldGuidePage(item) {
   const bc = breadcrumbs([{ label: 'Home', href: '/' }, { label: 'Guides', href: '/guides/' }, { label: item.title, href: path }]);
   const related = item.related.map((id) => fieldGuideMap.get(id)).filter(Boolean);
   const active = item.id === 'abilities' || item.category === 'abilities' ? 'abilities' : 'guides';
+  const checkpointTable = item.checkpoints ? `<h2>${esc(item.checkpointTitle)}</h2><div class="table-wrap"><table class="solution-table"><thead><tr><th>Current stage</th><th>Check this prerequisite</th><th>Guide</th></tr></thead><tbody>${item.checkpoints.map(([state, requirement, id]) => `<tr><th scope="row">${esc(state)}</th><td>${esc(requirement)}</td><td><a href="/guides/${id}/">${esc(fieldGuideMap.get(id).title)}</a></td></tr>`).join('')}</tbody></table></div><p>Source: <a href="https://www.powerpyx.com/control-resonant-walkthrough-all-quests/" target="_blank" rel="noopener noreferrer">PowerPyx quest prerequisite list</a>. This table maps recorded objectives to dependencies; it is not a diagnosis of a game bug.</p>` : "";
   const content = item.sections.map((section) => `<h2>${esc(section.title)}</h2>${section.paragraphs.map((paragraph) => `<p>${esc(paragraph)}</p>`).join('')}`).join('');
-  return `${head({ title: item.title, description: item.description, path, type: 'article', schemas: [bc.schema, articleSchema(item.title, item.description, path)] })}${header(active)}${bc.html}<main id="main">${pageHero(item.eyebrow, item.title, item.lead, `RFG / ${item.category.toUpperCase()}`)}<section class="article-layout"><div class="shell article-grid"><article class="article-body">${editorialMeta('Field guide')}<div class="answer-box"><span>DIRECT ANSWER</span><p>${esc(item.lead)}</p></div>${content}${fieldSourceRecord(item)}</article><aside class="article-rail"><div class="rail-file"><span>GUIDE CLUSTER</span><strong>${esc(fieldGuideCategories.find((category) => category.id === item.category)?.title || 'CONTROL Resonant')}</strong></div>${related.map((entry) => `<a class="rail-link" href="/guides/${entry.id}/">${esc(entry.title)} <span>-&gt;</span></a>`).join('')}<a class="rail-link" href="/last-taxi/">The Last Taxi <span>-&gt;</span></a><a class="button button-yellow full" href="/guides/">All field guides</a></aside></div></section><section class="related"><div class="shell"><div class="section-heading"><span class="kicker">Related files</span><h2>Continue this route</h2></div><div class="mini-grid">${related.map((entry) => `<a href="/guides/${entry.id}/"><span>${esc(entry.eyebrow)}</span><strong>${esc(entry.title)}</strong><small>${esc(entry.description)}</small></a>`).join('')}</div></div></section></main>${footer()}`;
+  return `${head({ title: item.title, description: item.description, path, type: 'article', schemas: [bc.schema, { ...articleSchema(item.title, item.description, path), dateModified: item.modified || site.lastModified }] })}${header(active)}${bc.html}<main id="main">${pageHero(item.eyebrow, item.title, item.lead, `RFG / ${item.category.toUpperCase()}`)}<section class="article-layout"><div class="shell article-grid"><article class="article-body">${editorialMeta('Field guide', item.reviewed)}<div class="answer-box"><span>DIRECT ANSWER</span><p>${esc(item.lead)}</p></div>${checkpointTable}${content}${fieldSourceRecord(item)}</article><aside class="article-rail"><div class="rail-file"><span>GUIDE CLUSTER</span><strong>${esc(fieldGuideCategories.find((category) => category.id === item.category)?.title || 'CONTROL Resonant')}</strong></div>${related.map((entry) => `<a class="rail-link" href="/guides/${entry.id}/">${esc(entry.title)} <span>-&gt;</span></a>`).join('')}<a class="rail-link" href="/last-taxi/">The Last Taxi <span>-&gt;</span></a><a class="button button-yellow full" href="/guides/">All field guides</a></aside></div></section><section class="related"><div class="shell"><div class="section-heading"><span class="kicker">Related files</span><h2>Continue this route</h2></div><div class="mini-grid">${related.map((entry) => `<a href="/guides/${entry.id}/"><span>${esc(entry.eyebrow)}</span><strong>${esc(entry.title)}</strong><small>${esc(entry.description)}</small></a>`).join('')}</div></div></section></main>${footer()}`;
 }
 
 function guidePage(item) {
@@ -475,7 +478,7 @@ const paths = [
   ...fieldGuides.map((item) => `/guides/${item.id}/`),
   ...simplePages.filter((item) => item.indexable !== false).map((item) => `/${item.slug}/`)
 ];
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((path) => `  <url><loc>${url(path)}</loc><lastmod>${site.lastModified}</lastmod></url>`).join('\n')}\n</urlset>\n`;
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((path) => `  <url><loc>${url(path)}</loc><lastmod>${fieldGuides.find((item) => `/guides/${item.id}/` === path)?.modified || site.lastModified}</lastmod></url>`).join('\n')}\n</urlset>\n`;
 await writeFile(join(out, 'sitemap.xml'), sitemap);
 await writeFile(join(out, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.domain}/sitemap.xml\n`);
 await cp(join(out, 'index.html'), join(root, 'preview.html'));

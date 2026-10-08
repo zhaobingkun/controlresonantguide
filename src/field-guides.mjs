@@ -50,6 +50,51 @@ export const fieldGuideCategories = [
   }
 ];
 
+const incursionSource = { label: 'PowerPyx: Incursion Fault route and Shift tutorial', url: 'https://www.powerpyx.com/control-resonant-the-incursion-fault-walkthrough/' };
+const subwaySource = { label: 'PowerPyx: Subway Fault route and Reach tutorial', url: 'https://www.powerpyx.com/control-resonant-the-subway-fault-walkthrough/' };
+
+// Apply page-specific evidence without changing unrelated review dates.
+export function enrichFieldGuides(items) {
+  const shift = items.find((item) => item.id === 'unlock-shift');
+  shift.lead = 'Shift is introduced during the Jesse ritual in The Incursion Fault. Reach the West Incursion parking garage, obtain its key, enter the Fault through the TV, and finish the tutorial route to leave.';
+  shift.sections[0] = { title: 'Reach the Fault and learn Shift', paragraphs: [
+    'The mission begins in West Incursion. At the locked garage, follow the search area southwest. Use the alley behind WEAR’EM & WASH’EM, enter beside the ground-facing laser, and inspect the floating body for the security key.',
+    'Unlock the garage, take the elevator, and drop through the rooftop opening. Cross the bottom gap to the TV. Enter the Fault and approach Jesse; Shift is introduced during the ritual, before the mission ends.',
+    'Follow the surface tutorial and the next TV. After exiting, use the wall behind the entrance TV to climb back toward the garage roof. The lesson and the escape are separate stages.'
+  ] };
+  shift.sources = [incursionSource, ...shift.sources];
+  shift.evidenceNote = 'The added garage route and ability timing follow PowerPyx’s mission walkthrough, reviewed October 8, 2026. We have not tested this route in-game. Use your on-screen control prompt; remapped controls and platform bindings may differ.';
+
+  const reach = items.find((item) => item.id === 'unlock-reach');
+  reach.lead = 'Reach is introduced during Jesse’s ritual in The Subway Fault, accessed from Railyard Street Station in the Evacuation Zone. Complete the training and use the grapple points to return from the tunnels.';
+  reach.sections[0] = { title: 'From Railyard Street Station to Reach', paragraphs: [
+    'Approach the Fault entrance at Railyard Street Station to start the mission. Descend into the subway and pass the train crossings. Shift offers an alternative crossing route if already unlocked; it is not listed as the mission’s entry requirement.',
+    'Continue through the Mold encounters. At the large pit, descend while avoiding trains, reach the enemy platform opposite your entry, and pass its rear door. The TV in the next room opens the Fault.',
+    'Find Jesse on the platform. Reach is introduced during the ritual; practice the anchors, then use elevated points to climb out after leaving the Fault. A distant point may become reachable after jumping and gliding.',
+    'On the return route, continuing straight at the checkpoint branch leads to the Patterned Metro Tunnels fast travel door. Activate it before leaving.'
+  ] };
+  reach.sources = [subwaySource, ...reach.sources];
+  reach.evidenceNote = 'The station approach, ritual timing, and return route follow PowerPyx’s Subway Fault walkthrough, reviewed October 8, 2026. No first-hand route test is claimed. Follow the current on-screen Reach binding rather than assuming one controller layout.';
+  reach.sections.at(-1).paragraphs[1] = 'Reloading is an unverified troubleshooting suggestion, not a confirmed repair. It cannot grant an ability the save has not unlocked.';
+
+  const order = items.find((item) => item.id === 'best-quest-order');
+  order.checkpointTitle = 'Prerequisites to check before moving on';
+  order.checkpoints = [
+    ['Before Enemy of My Enemy', 'Finish the Central and West Incursion Resonants.', 'control-resonant-walkthrough'],
+    ['Before the West Incursion Resonant', 'Complete The Incursion Fault.', 'unlock-shift'],
+    ['During Recursions and Iterations', 'Complete The Subway Fault if unfinished.', 'unlock-reach'],
+    ['During The House in Distress', 'Complete The Underpass Fault if unfinished.', 'all-quests'],
+    ['Before traversing late Unknown', 'Finish Pope’s Research for Sever the Hedron Links.', 'all-quests']
+  ];
+  const diagnosis = items.find((item) => item.id === 'where-to-go-next');
+  diagnosis.checkpointTitle = 'Match your current objective to a prerequisite';
+  diagnosis.checkpoints = order.checkpoints.map(([state, requirement, id]) => [state.replace('Before ', '').replace('During ', ''), requirement, id]);
+  for (const item of [shift, reach, order, diagnosis]) {
+    item.reviewed = 'October 8, 2026';
+    item.modified = '2026-10-08';
+  }
+}
+
 export const fieldGuides = [
   {
     id: 'control-resonant-walkthrough',
@@ -292,7 +337,7 @@ export const fieldGuides = [
     title: 'CONTROL Resonant: Unlock Shift',
     description: 'Unlock Shift through Jesse Sightings: The Incursion Fault and use gravity surfaces to reach West Incursion and Park routes.',
     eyebrow: 'Traversal unlock',
-    lead: 'Shift unlocks by completing Jesse Sightings: The Incursion Fault. It redirects Dylan across gravity anomalies and is required for important West Incursion Zone and Park routes.',
+    lead: 'Shift is taught during Jesse Sightings: The Incursion Fault. It redirects Dylan across gravity anomalies and is required for important West Incursion Zone and Park routes.',
     sections: [
       {
         title: 'Which quest unlocks Shift?',
@@ -339,7 +384,7 @@ export const fieldGuides = [
     title: 'CONTROL Resonant: Unlock Reach',
     description: 'Unlock Reach through Jesse Sightings: The Subway Fault and use grapple points for Underpass and late-game traversal.',
     eyebrow: 'Traversal unlock',
-    lead: 'Reach unlocks by completing Jesse Sightings: The Subway Fault. It activates grapple-style traversal points and is a required progression tool for Underpass routes and later exploration.',
+    lead: 'Reach is taught during Jesse Sightings: The Subway Fault. It activates grapple-style traversal points and is a required progression tool for Underpass routes and later exploration.',
     sections: [
       {
         title: 'Which quest unlocks Reach?',
