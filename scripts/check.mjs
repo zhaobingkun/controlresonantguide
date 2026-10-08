@@ -1,6 +1,7 @@
 import { access, readFile, readdir } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { consolidatedRoutes } from '../src/data.mjs';
 
 const root = join(fileURLToPath(new URL('.', import.meta.url)), '..');
 const publicRoot = join(root, 'public');
@@ -53,7 +54,25 @@ for (const required of ['robots.txt', 'sitemap.xml', 'assets/css/site.css', 'ass
 
 const sitemap = await readFile(join(publicRoot, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
-if (urls.length < 43) errors.push(`sitemap has only ${urls.length} URLs`);
+const indexable = [];
+for (const file of htmlFiles) {
+  const html = await readFile(file, 'utf8');
+  if (!/name="robots" content="[^"]*noindex/.test(html)) indexable.push(html.match(/rel="canonical" href="([^"]+)"/)?.[1]);
+  for (const oldPath of Object.keys(consolidatedRoutes)) if (html.includes(`href="${oldPath}"`)) errors.push(`${relative(publicRoot, file)}: links to merged URL ${oldPath}`);
+}
+if (new Set(urls).size !== urls.length) errors.push('duplicate sitemap URLs');
+for (const canonical of indexable) if (!urls.includes(canonical)) errors.push(`indexable page missing from sitemap: ${canonical}`);
+for (const canonical of urls) if (!indexable.includes(canonical)) errors.push(`sitemap URL has no indexable HTML: ${canonical}`);
+const config = JSON.parse(await readFile(join(root, 'vercel.json'), 'utf8'));
+for (const [source, destination] of Object.entries(consolidatedRoutes)) {
+  if (!config.redirects.some((r) => r.source === source && r.destination === destination && r.permanent)) errors.push(`missing permanent redirect: ${source}`);
+  if (urls.some((u) => new URL(u).pathname === source)) errors.push(`merged URL in sitemap: ${source}`);
+  const [target, anchor] = destination.split('#');
+  try {
+    const html = await readFile(join(publicRoot, target, 'index.html'), 'utf8');
+    if (anchor && !html.includes(`id="${anchor}"`)) errors.push(`missing redirect anchor: ${destination}`);
+  } catch { errors.push(`missing redirect destination: ${destination}`); }
+}
 
 if (errors.length) {
   console.error(errors.join('\n'));

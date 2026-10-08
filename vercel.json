@@ -4,15 +4,45 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.controlresonantguide.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.controlresonantguide.app"
+        }
+      ],
       "destination": "https://controlresonantguide.app/$1",
+      "permanent": true
+    },
+    {
+      "source": "/guides/how-to-start-last-taxi/",
+      "destination": "/last-taxi/#start",
+      "permanent": true
+    },
+    {
+      "source": "/guides/mila-payphone/",
+      "destination": "/last-taxi/#start",
+      "permanent": true
+    },
+    {
+      "source": "/guides/progress-not-saving/",
+      "destination": "/guides/missing-taxi-fix/#progress",
+      "permanent": true
+    },
+    {
+      "source": "/taxi-ending/",
+      "destination": "/last-taxi/#completion",
       "permanent": true
     }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

@@ -22,7 +22,7 @@ export const locations = [
     name: 'Downtown',
     label: 'Deserted Area road',
     puzzle: 'roof-signs',
-    confidence: 'Location verified across multiple guides',
+    confidence: 'Source-reported location; not tested in-game',
     intro: 'The Downtown taxi sits at the north end of the Deserted Area road, mixed into a stalled line of traffic.',
     route: 'Enter the Deserted Area and follow the main road north. Keep the abandoned traffic line in view instead of cutting through interiors. The interactable cab is among the vehicles near the end of the road.',
     landmark: 'A dense traffic jam on the northern road through the Deserted Area.',
@@ -42,8 +42,8 @@ export const locations = [
     name: 'Central',
     label: 'Warehouse service lane',
     puzzle: 'taxi-lights',
-    confidence: 'Location verified; exact puzzle pairing may vary',
-    intro: 'The Central taxi is tucked behind the warehouse area rather than sitting on the obvious main avenue.',
+    confidence: 'Sources disagree on the Central landmark',
+    intro: 'GamesRadar places the Central taxi behind a warehouse; PowerPyx instead describes a main-road approach. This route follows GamesRadar and has not been tested in-game.',
     route: 'Circle behind the Central warehouse and check the service lane between the rear wall and the nearby street. The taxi can be easy to pass when approaching only from the front entrance.',
     landmark: 'Rear warehouse access and a narrow service road in Central.',
     whyMissed: 'The front of the warehouse looks like the natural destination, but the taxi is reached by circling to the service side.',
@@ -62,7 +62,7 @@ export const locations = [
     name: 'Evacuation Zone',
     label: 'Dead-end between buildings',
     puzzle: 'roof-signs',
-    confidence: 'Location verified; hostile route conditions reported',
+    confidence: 'Source-reported location and nearby hazards',
     intro: 'This taxi is parked in a dead-end between buildings inside the Evacuation Zone.',
     route: 'Work inward from the zone road network and look for the blocked lane between buildings. Clear or bypass the local Hiss hazards before using the phone so you can study the puzzle without pressure.',
     landmark: 'A closed street pocket between buildings, with Hiss spikes or laser hazards nearby.',
@@ -80,19 +80,19 @@ export const locations = [
     id: 'west-incursion-zone',
     number: '04',
     name: 'West Incursion Zone',
-    label: 'Behind the Empire cinema',
+    label: 'Gravity wall near Empire Avenue',
     puzzle: 'streetlight-rhythm',
-    confidence: 'Location and streetlight puzzle widely reported',
-    intro: 'The West Incursion taxi is in a small parking area behind the Empire cinema, close to Empire Avenue Station.',
-    route: 'Start near Empire Avenue Station, move toward the Theater route, and turn behind the cinema facade. The cab is in the smaller rear lot, not on the main road in front of the building.',
-    landmark: 'Empire cinema rear parking area, near the station-to-Theater route.',
-    whyMissed: 'The obvious route continues toward the Theater. The taxi sits off that line near the cinema and gravity-wall approach, so it is easy to leave behind.',
+    confidence: 'Gravity-wall approach agrees across sources',
+    intro: 'The West Incursion taxi is on a gravity wall near Empire Avenue Station, along the Theater approach.',
+    route: 'Start near Empire Avenue Station and follow the Theater approach. Look for the gravity wall southwest of the fast travel door; the taxi is attached to the altered surface rather than parked in a rear lot.',
+    landmark: 'Gravity wall southwest of Empire Avenue, along the Theater route.',
+    whyMissed: 'The obvious route continues toward the Theater. The taxi is attached to the altered gravity surface, so searching only ordinary street-level parking can miss it.',
     confirmation: 'Use Empire Avenue Station as the anchor and verify that you are on the Theater-side route before searching the smaller parking area.',
     warning: 'Watch a full light cycle before choosing. The final round depends on which lamp is out of sync, not which one flashes first.',
     steps: [
       'Use Empire Avenue Station as the nearest orientation point.',
-      'Follow the route toward the Theater and move behind the Empire cinema.',
-      'Enter the small rear lot and answer Mila at the taxi payphone.',
+      'Follow the Theater route and inspect the nearby gravity wall.',
+      'Use the gravity route to reach the taxi, enter it, then answer Mila inside the Threshold.',
       'Observe the overhead streetlights for a complete cycle in every round.'
     ]
   },
@@ -122,7 +122,7 @@ export const locations = [
     name: 'Underpass',
     label: 'Deeper Underpass research ledge',
     puzzle: 'blackout',
-    confidence: 'Location and blackout rule verified across guides',
+    confidence: 'Sources describe the approach differently',
     intro: 'The Underpass taxi sits deeper in the area near the research route and is easiest to reach after opening the Recursions and Iterations path.',
     route: 'Use the cable-car and research-area route into the Deeper Underpass. Look across the ledges rather than staying at road level; the taxi encounter sits off the most direct transit line.',
     landmark: 'A research-area ledge in the Deeper Underpass, beyond the cable-car route.',
@@ -142,8 +142,8 @@ export const locations = [
     name: 'Unknown',
     label: 'Southern island road',
     puzzle: 'shadows',
-    confidence: 'Location verified; shadow rounds need further capture',
-    intro: 'The Unknown taxi is on the southernmost island, west of the Evac Building, on an otherwise empty road.',
+    confidence: 'Sources disagree on direction from Evac Building',
+    intro: 'GamesRadar places the Unknown taxi west of the Evac Building on the southernmost island; PowerPyx places it north of the building. The written directions conflict, so confirm the taxi marker before following either bearing.',
     route: 'Cross into the southern island and orient from the Evac Building. Move west onto the empty roadway; the isolated cab stands out once you are on the correct island.',
     landmark: 'A quiet road west of the Evac Building on the southernmost island.',
     whyMissed: 'Unknown is visually disorienting and the empty road can look like scenery at the edge of the playable route.',
@@ -203,7 +203,7 @@ export const puzzles = [
     name: 'Blackout Puzzle',
     signal: 'Tunnel lights switch off at regular intervals',
     short: 'Ignore the normal-lit state and judge each taxi only during the blackout.',
-    answer: 'Use the blackout as a filter. Reported rounds include a cab that stays lit, one that becomes completely dark, and one whose roof sign flashes only while the tunnel is dark.',
+    answer: 'Use the blackout as a filter. Reported rounds include a cab that stays lit, one that becomes completely dark, and one whose lights are off while the streetlights are on.',
     details: [
       'Stand where you can see several taxis without turning during the short blackout.',
       'Wait through at least two cycles when a roof sign flash is easy to miss.',
@@ -229,7 +229,7 @@ export const puzzles = [
     name: 'Shadow Puzzle',
     signal: 'A portable light changes the shadows cast by each taxi',
     short: 'Carry the light along the row and look for the taxi whose shadow behaves differently.',
-    answer: 'Place the portable light in a comparable position beside each cab. The odd shadow, not the most damaged taxi model, identifies the anomalous choice.',
+    answer: 'Shine the portable light toward the wall and choose a cab casting a taxi-shaped shadow, rather than a different vehicle silhouette. For the final round, GamesRadar additionally describes checking for the roof-sign shadow; PowerPyx does not describe that distinction.',
     details: [
       'Keep roughly the same distance and angle when testing every taxi.',
       'Look at the ground and wall behind the cab rather than the light source itself.',
@@ -241,61 +241,34 @@ export const puzzles = [
 
 export const guides = [
   {
-    id: 'how-to-start-last-taxi',
-    title: 'How to Start The Last Taxi',
-    description: "How Mila's phone calls and the first taxi encounter begin CONTROL Resonant's seven-part Side Story.",
-    eyebrow: 'Quest setup',
-    lead: 'The Last Taxi is a roaming Side Story built around seven abnormal cabs across Manhattan. You do not solve it from one quest marker; each encounter begins when you find the local taxi and answer Mila at its payphone.',
-    sections: [
-      ['What should I look for?', 'Look for a yellow taxi positioned like an encounter rather than ordinary street dressing, then listen and watch for the nearby phone interaction. The taxi guide pages use durable landmarks because the city map can be harder to read than the streets themselves.'],
-      ['What happens after the call?', 'The call moves Dylan into a short Threshold test. Each test has three selection rounds. A green traffic light confirms a correct pick; a wrong selection repeats or resets the current test rather than permanently failing the Side Story.'],
-      ['Do I need a fixed order?', 'The locations are presented as a route, but the useful rule is simpler: clear any accessible taxi and track the remaining zones. If a route is blocked by story progression, move to another region and return later.']
-    ]
-  },
-  {
-    id: 'mila-payphone',
-    title: "Mila's Payphone Explained",
-    description: 'What the ringing taxi phone means, how the green traffic light works, and what to do when the interaction does not appear.',
-    eyebrow: 'Quest mechanic',
-    lead: "Mila's payphone is the handoff between exploration and the Threshold puzzle. Answering it starts the local test; the traffic signal inside the test is your immediate feedback system.",
-    sections: [
-      ['Why is the phone important?', 'The cab itself is the location clue, but the call establishes the test. Clear nearby combat first so prompts, audio, and visual changes are easier to read.'],
-      ['What does the green signal mean?', 'Green confirms the cab you chose is correct and advances the encounter. If the signal does not confirm, stop and re-read the environment rather than repeating the same taxi based on position.'],
-      ['What if nothing is ringing?', 'Check that the local encounter is accessible, that nearby enemies are cleared, and that you are at the actual Side Story cab rather than a normal yellow taxi. Leave the immediate area, reload a recent checkpoint, and return before assuming the quest is broken.']
-    ]
-  },
-  {
     id: 'missing-taxi-fix',
-    title: 'Taxi Missing or Phone Not Ringing',
+    title: 'Last Taxi Location and Progress Help',
     description: 'A short troubleshooting order for missing taxis, silent payphones, blocked routes, and incomplete progress.',
     eyebrow: 'Troubleshooting',
-    lead: 'Most missing-taxi reports fall into one of four buckets: the wrong street, unfinished combat, a route locked by story progression, or a stale checkpoint state. Check them in that order.',
+    lead: 'Check your taxi landmark, route access, and completed Threshold rounds before treating the quest as broken. The website checklist is separate from your game save; the suggestions below are diagnostic checks, not confirmed bug fixes.',
     sections: [
-      ['1. Verify the landmark', 'Use the zone-specific landmark and approach text, not just the district name. Central is behind the warehouse; West Incursion is behind the cinema; The Park taxi is inside the garage.'],
+      ['1. Verify the landmark', 'Use the zone-specific landmark and approach text, not just the district name. Central is behind the warehouse; West Incursion is on a gravity wall near Empire Avenue; The Park taxi is inside the garage.'],
       ['2. Clear the area', 'Finish active encounters and remove hazards close to the phone. Some interactions are difficult to notice while combat audio and effects are still active.'],
       ['3. Check progression', 'The deeper Underpass route in particular depends on access through later paths. If a traversal route is still closed, continue the main path and return.'],
-      ['4. Refresh the checkpoint', 'Move away, reload the latest checkpoint, and revisit the taxi. This is less disruptive than reinstalling or starting a new save and should be tried first.']
-    ]
-  },
-  {
-    id: 'progress-not-saving',
-    title: 'Last Taxi Progress Not Updating',
-    description: 'How to confirm a completed taxi test, distinguish site checklist data from game progress, and recover from a stale objective.',
-    eyebrow: 'Progress help',
-    lead: 'The checklist on this website is a private browser aid; it does not read or change your game save. In the game, use the completed Threshold sequence and objective state as the source of truth.',
-    sections: [
-      ['Confirm the full test ended', 'A single correct taxi is only one round. Make sure all three selections completed and the encounter returned Dylan from the Threshold before leaving the zone.'],
-      ['Check a different region', 'If the quest counter looks stale, visit another known cab. The remaining-location pattern often reveals whether one Threshold was left before its final confirmation.'],
-      ['Reload without overwriting', 'Use the latest automatic checkpoint and revisit the suspected cab. Avoid deleting saves or starting over until you have confirmed the issue across a reload.'],
-      ['About this site checklist', 'Your seven checkboxes are stored only in localStorage on this device and browser. Clearing site data resets them; the Reset control does not affect CONTROL Resonant.']
+      ['4. If the prompt still fails', 'After confirming the location and route access, you can try leaving the area and reloading the latest checkpoint. This is a general diagnostic suggestion, not a verified fix. Preserve your existing saves.'],
+      ['Website checklist versus game progress', 'This website stores checkboxes only in localStorage on this browser. Clearing browser data removes them; resetting the checklist does not change the game. Use the in-game quest state to confirm completion.'],
+      ['Confirm the last call', 'After completing all seven encounters, answer Mila one final time in the Threshold alley. A correct selection is only one round, not a completed encounter. If the quest remains open, compare the seven regions against your completed rounds.'],
+      ['Report an unresolved issue', 'Record your platform, game version, current quest objective, region, and a screenshot or clip of the missing interaction. Include whether reloading changed the state. This evidence helps distinguish a route misunderstanding from a reproducible issue.']
     ]
   }
 ];
 
 export const faqs = [
   ['How many taxis are in The Last Taxi?', 'Seven taxis are reported across Downtown, Central, Evacuation Zone, West Incursion Zone, The Park, Underpass, and Unknown.'],
-  ['Are taxi puzzles fixed to specific zones?', 'Current walkthroughs do not fully agree. This guide lists commonly reported pairings but tells you to identify the active puzzle from visible evidence.'],
+  ['Are taxi puzzles fixed to specific zones?', 'Published walkthroughs disagree on some round sequences. That does not establish random zone assignments. Follow the visible clue rather than assuming a source conflict proves the game varies.'],
   ['How do I know a taxi answer is correct?', 'The traffic light turns green after a correct selection and the encounter advances to the next round.'],
   ['What is The Last Taxi reward?', 'The reported completion reward is the Untapped Coffee Cup Artifact. Game Update 1.4.0 also fixed a launch issue that could prevent The Last Taxi rewards from being granted.'],
   ['Does the checklist sync with my game?', 'No. It is a private browser checklist stored on this device and does not connect to your game or save file.']
 ];
+
+export const consolidatedRoutes = {
+  "/guides/how-to-start-last-taxi/": "/last-taxi/#start",
+  "/guides/mila-payphone/": "/last-taxi/#start",
+  "/guides/progress-not-saving/": "/guides/missing-taxi-fix/#progress",
+  "/taxi-ending/": "/last-taxi/#completion"
+};

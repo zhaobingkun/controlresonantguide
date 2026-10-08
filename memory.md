@@ -1,5 +1,39 @@
 # Project Memory
 
+## 2026-10-08 - Taxi Consolidation
+
+- User said continue after audit. Consolidated start, payphone and ending pages into /last-taxi/ with #start and #completion sections; merged progress support into missing-taxi-fix with #progress. Four former URLs use permanent Vercel redirects, are absent from sitemap, and internal links point directly to destinations.
+- Narrowed Quest List title to Main Quest List; replaced unproven missing-taxi cause statistics with diagnostic suggestions. About explicitly distinguishes source summaries from in-game testing.
+- Current build: 39 indexable URLs / 43 HTML files. Enhanced check reconciles indexable HTML with sitemap and checks merged links, redirect destinations and anchors rather than requiring an arbitrary URL minimum. Build, check and diff whitespace checks pass.
+- Publication verification pending below. Original gameplay evidence and editor identity still require real inputs.
+
+
+## 2026-10-08 - Content Quality Audit and Corrections
+
+- User authorized investigation after asking whether indexing reflected content quality. Added CONTENT_AUDIT_2026-10-08.md with site inventory, evidence limits and consolidation candidates.
+- All 43 sitemap pages tested live: HTTP 200, no redirects, self canonicals and index,follow. This is ordinary HTTP evidence, not Googlebot/GSC live-test evidence.
+- Corrected unsupported West Incursion rear-lot route to the gravity-wall approach; corrected start-guide taxi/phone order; clarified shadow matching and blackout clue. Central, Underpass and Unknown sources conflict and are now explicitly labeled rather than globally verified.
+- Changed shared Last verified label to Sources reviewed; removed homepage verified-location promise and clarified source conflict does not establish randomized region mapping.
+- Found Reward and Ending were unreachable through site links despite inclusion in sitemap; added links from /last-taxi/.
+- Candidate consolidations: taxi start/payphone/completion/support pages and overlapping campaign-order pages. No redirects, URL removal or noindex added in this audit. Original captures and editor identity remain missing.
+- npm run build and npm run check pass (43 indexable URLs / 47 HTML files). Corrections are local only; not committed, pushed or deployed. Do not attribute GSC discovered status to these issues as a confirmed cause.
+
+## 2026-10-08 - GSC Coverage Export Review
+
+- User supplied four coverage CSVs from Documents/controlresonantguide.app-Coverage-2026-10-08. Latest chart row is October 4, not October 8: 43 not indexed, 3 indexed, 17 impressions. October 2 and 3 show 5 and 11 impressions respectively.
+- Exclusion reasons: 40 Discovered - currently not indexed; 3 Page with redirect. Non-critical issue CSV has no data rows. Export scope is all known pages, not exclusively the submitted sitemap; counts must not be equated with the 43 sitemap URLs.
+- Live checks on October 8: homepage and /guides/ return HTTPS 200; robots allows all and lists the production sitemap. Local npm run check passes 47 HTML files / 43 sitemap URLs. Initial sandbox DNS failure was resolved with authorized external network access and is not evidence of a production DNS failure.
+- CSVs contain no affected URL lists, so redirect correctness and per-URL crawl eligibility remain unverified. Do not attribute the 40 URLs to content quality, server overload, or penalties without further evidence.
+- Next diagnostic inputs: URL lists for both exclusion categories, URL Inspection live tests for representative important pages, and sitemap processing status. Report already proves some indexing and search visibility, but does not prove core-page coverage; readiness flags left unchanged.
+
+## 2026-10-02 - Next-Step Review
+
+- User asked what to do next. Current local check passes for 47 HTML files and 43 sitemap URLs; AdSense readiness still fails four gates: named editor, original gameplay captures, confirmed GSC indexing, and observed reader/search activity.
+- Recommended priority: verify Search Console ownership, sitemap processing and key-page indexing; verify GA4 collection; strengthen existing guides with real editor identity and original gameplay evidence; choose future content from actual query/impression data.
+- Search Console submission and actual indexing must remain distinct. Existing readiness flags are project records, not proof that no pages are indexed; inspect the account before updating them.
+- This review did not access Search Console or GA4 account reports. The web reader could not access the production homepage, so this session does not establish current live availability.
+- Current session checkout is `/Users/zhaobingkun/dev/controlresonantguide`; the older directory recorded under Domain Decision is historical.
+
 ## 2026-10-01 - Initial Build
 
 - Working brand: **Resonant Field Guide**.

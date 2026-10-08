@@ -101,8 +101,8 @@ export const fieldGuides = [
   {
     id: 'all-quests',
     category: 'progression',
-    title: 'CONTROL Resonant Quest List',
-    description: 'The CONTROL Resonant quest structure explained: Contain the Crisis, Search for Jesse, regional Resonants, and optional Side Stories.',
+    title: 'CONTROL Resonant Main Quest List',
+    description: 'The CONTROL Resonant main quest structure explained: Contain the Crisis, Search for Jesse, regional Resonants, and optional Side Stories.',
     eyebrow: 'Quest reference',
     lead: 'The campaign uses three main headings rather than one linear list: Contain the Crisis, Search for Jesse, and Defeating Resonants. Side Stories sit beside those tracks and can unlock travel or completion progress without replacing the main route.',
     sections: [
